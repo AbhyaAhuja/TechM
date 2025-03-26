@@ -20,4 +20,3 @@ public class Student {
         stu.showDetails();
     }
 }
-radhe radhe
