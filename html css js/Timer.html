@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="time.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main">
+        <h1>COUNTDOWN TIMER</h1>
+        <div class="time">
+            <input type="number" placeholder="00" id="min">
+            <span class="colon">:</span>
+            <input type="number" placeholder="00" id="sec">
+
+
+        </div>
+        <div class= "btns">
+            <button id="start">Start</button>
+            <button id="pause">Pause</button>
+            <button id="reset">Reset</button>
+        </div>
+
+        <h4 id="display">00:00</h4>
+
+    </div>
+    <script>
+        let totalSeconds = 0;
+        let key = null;
+
+        const start = document.getElementById("start")
+        const pause = document.getElementById("pause")
+        const reset = document.getElementById("reset")
+
+        // start
+        start.addEventListener("click", () => {
+            if (key) return // handle multiple clicks
+            const mins = parseInt(document.getElementById("min").value) || 0;
+            const secs = parseInt(document.getElementById("sec").value) || 0;
+            if (!totalSeconds) totalSeconds = 60 * mins + secs;
+            key = setInterval(() => {
+                if (totalSeconds > 0) {
+                    const minutes = Math.floor(totalSeconds / 60);
+                    const seconds = totalSeconds % 60;
+
+                    document.getElementById("display").textContent = `${String(minutes).padStart(2, '0')}: ${String(seconds).padStart(2, '0')}`
+                    totalSeconds--;
+
+                }
+                else {
+                    clearInterval(key);
+                    key = null;
+                    document.getElementById("display").textContent = "Time's up!"
+
+                }
+
+            }, 1000)
+
+        })
+
+        pause.addEventListener("click", () => {
+            if (key) {
+
+                clearInterval(key);
+                key = null;
+            }
+        })
+
+        reset.addEventListener("click", () => {
+            clearInterval(key);
+            totalSeconds = 0;
+            document.getElementById("display").textContent = "00:00"
+            key = null;
+            document.getElementById("mins").value = "0";
+            document.getElementById("secs").value = "0";
+
+        })
+    </script>
+
+</body>
+
+</html>
