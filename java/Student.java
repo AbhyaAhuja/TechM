@@ -3,12 +3,12 @@ public class Student {
 
     private String name;
     private int roll;
-    private int marks;
+    private float marks;
 
-    Student(String n, int r, int m) {
-        name = n;
-        roll = r;
-        marks = m;
+    Student(String name, int roll, float marks) {
+        this.name = name;
+        this.roll = roll;
+        this.marks = marks;
     }
 
     public void showDetails() {

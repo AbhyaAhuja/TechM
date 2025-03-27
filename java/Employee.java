@@ -4,15 +4,15 @@ import java.util.*;
 class Employee {
     String name;
     int ID;
-    int salary;
+    double salary;
 
-    Employee(String name, int ID, int salary) {
+    Employee(String name, int ID, double salary) {
         this.name = name;
         this.ID = ID;
         this.salary = salary;
     }
 
-    int netSalary(int bonus, int tax) {
+    double netSalary(double bonus, double tax) {
         return salary + bonus - tax;
     }
 
@@ -25,18 +25,18 @@ class Employee {
         int EmpID = sc.nextInt();
 
         System.out.println("Enter salary of employee");
-        int EmpSalary = sc.nextInt();
+        double EmpSalary = sc.nextDouble();
 
         System.out.println("Enter bonus of employee");
-        int bonus = sc.nextInt();
+        double bonus = sc.nextDouble();
 
         System.out.println("Enter tax of employee");
-        int tax = sc.nextInt();
+        double tax = sc.nextDouble();
         Employee e = new Employee(EmpName, EmpID, EmpSalary);
 
-        int net = e.netSalary(bonus, tax);
+        double net = e.netSalary(bonus, tax);
         System.out.println("Employee details");
         System.out.println("Name: "+ EmpName+ ", ID: "+ EmpID + ", Base salary: " + EmpSalary + ", Bonus: "+ bonus +", Tax: "+ tax+", Net Salary: "+ net);
-
+sc.close();
     }
 }
